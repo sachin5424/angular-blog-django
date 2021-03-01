@@ -1,0 +1,106 @@
+
+    <mat-list-item >Categories
+        <div class="list-space"></div>
+        <a (click)="toggle_list()"> <span class="material-icons" style="color: tomato;">
+                note_add
+            </span>
+        </a>
+        <a (click)="toggle_list_view()"> <span class="material-icons" style="color: green;">
+            list
+        </span>
+    </a>
+    
+    </mat-list-item>
+    <div *ngIf="panelOpenState" >
+        <div class="container">
+            <div class="row p-4">
+                <div class="col-md-9 ">
+                    <form [formGroup]="categories_form" (ngSubmit)="onSubmit()" >
+                        <div class="example-container">
+                           
+                             <mat-form-field >
+                             <mat-label>Input</mat-label>
+                             <input matInput formControlName="Categories_name" name="Categories_name" placeholder="Placeholder">
+                             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                             <mat-hint style="color: red;"> {{form_temp}}</mat-hint>
+                            
+                             <!-- <mat-error >{{form_temp}}</mat-error> -->
+                             </mat-form-field>
+                           
+                             <button mat-raised-button style="margin-left: 10px;">save</button>
+                            
+                                <a (click)="toggle_list()">
+                                    <span class="material-icons" style=" margin-left: 15px;">
+                                        clear
+                                    </span>
+                                </a>
+                         
+                          </div>
+                          
+                       </form>
+                </div>
+            </div>
+        </div>
+         
+    </div>
+    <div *ngIf="categories_list">
+        <div class="container">
+            <div class="row p-4">
+                <div class="float-right mb-3">
+                   <a>
+                    <span mat-flat-button (click)="ngOnInit()" class="material-icons" style="color: green;">
+                        refresh
+                        </span>
+                   </a>
+                </div>
+                <div class="col-md-12 ">
+                   
+                    
+                   <mat-list *ngFor="let item of categories_data">
+                   <mat-list-item > {{item.Categories_name}} 
+                    <div class="list-space"></div>
+                    
+                   <a (click)="categorie_updateform(item)">
+                    <span class="material-icons" style="color: skyblue;">
+                        update
+                        </span>
+                   </a>
+                   </mat-list-item>
+                   <mat-divider></mat-divider>
+                  
+                   </mat-list>
+                </div>
+            </div>
+        </div>
+         
+    </div>
+    <div *ngIf="categories_update">
+        <div class="container">
+            <div class="row p-4">
+                <div class="col-md-9 ">
+                   
+                        <div class="example-container">
+                           
+                             <mat-form-field  >
+                             <mat-label>Input</mat-label>
+                             <input hidden type="text" [value]="categories_update_id" #categories_updateId>
+                             <input matInput  name="Categories_name" [value]="categories_update_value"  placeholder="Placeholder" #update>
+                             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                             <mat-hint style="color: red;"> {{form_temp}}</mat-hint>
+                            
+                             <!-- <mat-error >{{form_temp}}</mat-error> -->
+                             </mat-form-field>
+                             <button color="primary" mat-raised-button style="margin-left: 10px;" (click)="onupdate(update.value)">update</button>
+                             <button color="warn" mat-raised-button style="margin-left: 10px;" (click)="ondelete(categories_updateId)">
+                            <mat-icon>delete</mat-icon>
+                            </button>
+                           
+                          </div>
+                          
+                     
+                </div>
+            </div>
+        </div>
+         
+    </div>
+    

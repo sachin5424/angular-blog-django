@@ -1,0 +1,124 @@
+
+    <mat-list-item >Blog
+        <div class="list-space"></div>
+        <a (click)="toggle_list()"> <span class="material-icons" style="color: tomato;">
+                note_add
+            </span>
+        </a>
+        <a (click)="toggle_list_view()"> <span class="material-icons" style="color: green;">
+            list
+        </span>
+    </a>
+    
+    </mat-list-item>
+    <div *ngIf="panelOpenState" >
+        <div class="container">
+            <div class="row p-4">
+                <div class="col-md-9 ">
+                
+                    <form [formGroup]="categories_form" (ngSubmit)="onSubmit()" >
+                        <div class="example-container">
+                          <div class="form-group">
+                            <label for="">Select Categories</label>
+                            <select class="form-control" formControlName="Item_categories" name="Item_categories" id="" *ngFor="let item of categories_data">
+                              <option value="">Select Categories</option>
+                              <option value="{{item.id}}">{{item.Categories_name}}</option>
+                            
+                            </select>
+                          </div>
+                           <div class="form-group">
+                             <label for="">Title</label>
+                             <input type="text"
+                               class="form-control" formControlName="Item_title" name="Item_title" id="" aria-describedby="helpId" placeholder="">
+                             <small id="helpId" class="form-text text-muted">Help text</small>
+                           </div>
+
+                          <div class="form-group">
+                            <label for="">Images</label>
+                            <input type="file" class="form-control-file" (change)="onChange($event)" name="" id="" placeholder="" aria-describedby="fileHelpId">
+                            <small id="fileHelpId" class="form-text text-muted">Help text</small>
+                          </div>
+                        <div class="form-group">
+                          <label for="">Description</label>
+                          <textarea class="form-control" formControlName="Item_Description"  name="Item_Description" name="" id="" rows="3"></textarea>
+                        </div>
+                          <div class="form-check">
+                            <input class="form-check-input" formControlName="is_Active" value=true  type="radio" name="is_Active" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                              Active
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" formControlName="is_Featured" value=true  type="radio" name="is_Featured" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Description
+                            </label>
+
+                          </div>
+                          
+                             <button color="warn" mat-raised-button style="margin-left: 10px; margin-top: 20px;">save</button>
+                          </div>
+                          
+                       </form>
+                </div>
+            </div>
+        </div>
+         
+    </div>
+    <div *ngIf="categories_list">
+        <div class="container-fluid">
+            <div class="row p-4">
+                <div class="float-right mb-3">
+                   <a>
+                    <span mat-flat-button (click)="ngOnInit()" class="material-icons" style="color: green;">
+                        refresh
+                        </span>
+                   </a>
+                </div>
+
+                <div class="col-md-6 p-4"  *ngFor="let item of blog_data">
+                 <mat-card>
+                   <img matCardImage src="{{item.Item_Images}}">
+                   <mat-card-title>{{item.Item_title}}</mat-card-title>
+                   <mat-card-content>{{item.Item_Description}}</mat-card-content>
+                    <mat-card-actions>
+                      <button mat-button>View</button>
+                      <button mat-button>update</button>
+                    </mat-card-actions>
+                 
+                 </mat-card>
+                </div>
+            </div>
+        </div>
+         
+    </div>
+    <div *ngIf="categories_update">
+        <div class="container">
+            <div class="row p-4">
+                <div class="col-md-9 ">
+                   
+                        <div class="example-container">
+                           
+                             <mat-form-field  >
+                             <mat-label>Input</mat-label>
+                             <input hidden type="text" [value]="categories_update_id" #categories_updateId>
+                             <input matInput  name="Categories_name" [value]="categories_update_value"  placeholder="Placeholder" #update>
+                             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                             <mat-hint style="color: red;"> {{form_temp}}</mat-hint>
+                            
+                             <!-- <mat-error >{{form_temp}}</mat-error> -->
+                             </mat-form-field>
+                             <button color="primary" mat-raised-button style="margin-left: 10px;" (click)="onupdate(update.value)">update</button>
+                             <button color="warn" mat-raised-button style="margin-left: 10px;" (click)="ondelete(categories_updateId)">
+                            <mat-icon>delete</mat-icon>
+                            </button>
+                           
+                          </div>
+                          
+                     
+                </div>
+            </div>
+        </div>
+         
+    </div>
+   
