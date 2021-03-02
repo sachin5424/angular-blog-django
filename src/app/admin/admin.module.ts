@@ -7,9 +7,11 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoriesComponent } from './categories/categories.component';
 import { BlogComponent } from './blog/blog.component';
+import { UpdateComponent } from './blog/update/update.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
-  declarations: [DashboardComponent, CategoriesComponent, BlogComponent],
+  declarations: [DashboardComponent, CategoriesComponent, BlogComponent, UpdateComponent, UsersComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

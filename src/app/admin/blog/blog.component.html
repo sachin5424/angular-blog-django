@@ -1,5 +1,5 @@
 
-    <mat-list-item >Blog
+    <mat-list-item >Blog 
         <div class="list-space"></div>
         <a (click)="toggle_list()"> <span class="material-icons" style="color: tomato;">
                 note_add
@@ -20,9 +20,10 @@
                         <div class="example-container">
                           <div class="form-group">
                             <label for="">Select Categories</label>
-                            <select class="form-control" formControlName="Item_categories" name="Item_categories" id="" *ngFor="let item of categories_data">
-                              <option value="">Select Categories</option>
-                              <option value="{{item.id}}">{{item.Categories_name}}</option>
+                            <select class="form-control" formControlName="Item_categories" name="Item_categories" id="" >
+                              <option value="">setect Categories</option>
+                              
+                              <option *ngFor="let item of categories_get_data"  value="{{item.id}}">{{item.Categories_name}}</option>
                             
                             </select>
                           </div>
@@ -76,13 +77,13 @@
                    </a>
                 </div>
 
-                <div class="col-md-6 p-4"  *ngFor="let item of blog_data">
-                 <mat-card>
+                <div class="col-md-6 p-4" *ngFor="let item of blog_data">
+                 <mat-card style="box-shadow: 0px 6px 8px rgb(177, 172, 172);"  >
                    <img matCardImage src="{{item.Item_Images}}">
                    <mat-card-title>{{item.Item_title}}</mat-card-title>
-                   <mat-card-content>{{item.Item_Description}}</mat-card-content>
+                   <mat-card-content>{{item.Item_categories}}</mat-card-content>
                     <mat-card-actions>
-                      <button mat-button>View</button>
+                      <button (click)="categorie_updateform(item)" mat-button>View</button>
                       <button mat-button>update</button>
                     </mat-card-actions>
                  
@@ -98,21 +99,7 @@
                 <div class="col-md-9 ">
                    
                         <div class="example-container">
-                           
-                             <mat-form-field  >
-                             <mat-label>Input</mat-label>
-                             <input hidden type="text" [value]="categories_update_id" #categories_updateId>
-                             <input matInput  name="Categories_name" [value]="categories_update_value"  placeholder="Placeholder" #update>
-                             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-                             <mat-hint style="color: red;"> {{form_temp}}</mat-hint>
-                            
-                             <!-- <mat-error >{{form_temp}}</mat-error> -->
-                             </mat-form-field>
-                             <button color="primary" mat-raised-button style="margin-left: 10px;" (click)="onupdate(update.value)">update</button>
-                             <button color="warn" mat-raised-button style="margin-left: 10px;" (click)="ondelete(categories_updateId)">
-                            <mat-icon>delete</mat-icon>
-                            </button>
-                           
+                            <app-update [data]="blog_update"  (delete_value)="onupdate($event)"></app-update>
                           </div>
                           
                      

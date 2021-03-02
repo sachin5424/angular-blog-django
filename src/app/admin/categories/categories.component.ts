@@ -8,8 +8,8 @@ import { AdminService } from '../admin.service';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
-  panelOpenState = true;
-  categories_list:boolean=false
+  panelOpenState = false;
+  categories_list:boolean=true
   categories_update:boolean=false
   categories_update_value:string |undefined
   categories_update_id:string |undefined

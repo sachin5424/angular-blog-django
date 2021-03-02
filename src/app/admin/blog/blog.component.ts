@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from '../admin.service';
+import { Blog } from '../blog';
 
 @Component({
   selector: 'app-blog',
@@ -9,37 +10,41 @@ import { AdminService } from '../admin.service';
 })
 export class BlogComponent implements OnInit {
   panelOpenState = false;
-  categories_list:boolean=false
+  categories_list:boolean=true
   categories_update:boolean=false
   categories_update_value:string |undefined
   categories_update_id:string |undefined
-  categories_data:any=[]
+  categories_get_data:any=[]
   blog_data:any
   file:any
   error=false
+  hello:any
   form_temp:string |undefined
-  
+  blog_update:any
 
  
   constructor(private _adminService:AdminService) { }
 
   ngOnInit(): void {
+    console.log(this.hello,'output');
+    
     this._adminService.blog_list().subscribe((result:any)=>{
       this.blog_data=result
       console.log(result);
       
       
       })
+      this._adminService.categories_list().subscribe((result:any)=>{
+        this.categories_get_data=result
+        
+        })
     
   }
   toggle_list(){
   
    if(this.panelOpenState === false){
     this.panelOpenState=true 
-    this._adminService.categories_list().subscribe((result:any)=>{
-      this.categories_data=result
-      
-      })
+   
     this.categories_update=false
    }
    else{
@@ -51,9 +56,11 @@ export class BlogComponent implements OnInit {
     if(this.categories_list === false){
      this.categories_list=true 
      this.panelOpenState=false
+     this.categories_update=false
      this._adminService.blog_list().subscribe((result:any)=>{
       this.blog_data=result
       console.log(result);
+      
       
       
       })
@@ -120,54 +127,30 @@ export class BlogComponent implements OnInit {
   // update
 
   categorie_updateform(data:any){
-    // console.log(data);
-   if(this.categories_update===false){
-           this.categories_list=false
-           this.panelOpenState=false
-           this.categories_update=true
-           const categoriesUpdate = {
-             id:data.id,
-             Categories_name:data.Categories_name
-           }
-           this.categories_update_value=categoriesUpdate.Categories_name
-           this.categories_update_id=categoriesUpdate.id
-           console.log(categoriesUpdate);
-          
-           
-    }
-    else{
-      this.categories_update=false
-    }
+  
+    if(this.categories_update===false){
+      this.categories_list=false
+      this.panelOpenState=false
+      this.categories_update=true
+     console.log(data,'update');
+      this.blog_update=data
+      
+}
+else{
+ this.categories_update=false
+}
+  
   }
   onupdate(update:any){
-    console.log(this.categories_update_value,update);
-    const categoriesUpdate = {
-      id:this.categories_update_id,
-      Categories_name:update
-    }
-    console.log(categoriesUpdate);
+    console.log(update);
+    console.log('update');
     
-    this._adminService.categories_update(this.categories_update_id,categoriesUpdate).subscribe(result=>{
-      console.log(result);
-      
-    },
-   (error)=>{
-     this.form_temp= error.error.Categories_name
-   } 
-    )
+   
     
   }
-  ondelete(id:any){
-
-  this._adminService.categories_delete(id.value).subscribe(result=>{
-    console.log(result);
-    this.categories_update=false
-    this.categories_list=true
-    this.ngOnInit()
+  displayCounter(event:any){
+    console.log(event,'e');
     
-    
-  })
-
   }
   
 }

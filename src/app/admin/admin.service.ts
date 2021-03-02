@@ -34,4 +34,12 @@ export class AdminService {
     return this.http.get(this.url+'blog-list')
   }
 
+  blog_update(id:any,data:any){
+    return this.http.put(this.url+'blog/'+id,data)
+  }
+  blog_delete(id:any){
+    return this.http.delete(this.url+'blog/'+id)
+  }
+
+
 }
