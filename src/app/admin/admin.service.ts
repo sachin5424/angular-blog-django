@@ -40,6 +40,10 @@ export class AdminService {
   blog_delete(id:any){
     return this.http.delete(this.url+'blog/'+id)
   }
-
+  
+  // users
+  user_list(){
+    return this.http.get(this.url+'user-list/')
+  }
 
 }
