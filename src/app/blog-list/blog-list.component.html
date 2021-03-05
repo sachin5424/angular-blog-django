@@ -1,26 +1,50 @@
+<div class="h-50">
+    <img class="p-0 m-0" src="assets/blog-images/chris-ried-sqJ40H9RtNw-unsplash.jpg" width="100%" >
+    <div class="" style="z-index: 1;">
+        <h1>Blogs</h1>
+    </div>
+</div>
+   
+ 
+
 <div class="container">
-    <div class="row mt-5">
+   
+    <div class="row ">
+
        
-        <div class="col-md-4">
+        <!-- <div class="col-md-4 p-3" *ngFor="let item of Blog_list">
            <mat-card>
-           <mat-card-title>Dog Lovers</mat-card-title>
-           <mat-card-subtitle>Sachin sagar</mat-card-subtitle>
-           <mat-card-content>A small, agile dog that copes very well with mountainous terrain and hiking trails, the Shiba Inu
-             was originally bred for hunting.</mat-card-content>
-           <!-- mat-card-image || mat-card-sm-image || mat-card-md-image ||   
-             mat-card-lg-image || mat-card-avatar -->
-           <img mat-card-lg-image src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Shiba Inu">
-           <!-- align= "end" || "start" -->
-           <mat-card-actions align="end">
-           <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+           <mat-card-title>{{item.Blog_title}}</mat-card-title>
+           <mat-card-subtitle>{{item.Blog_categories}}</mat-card-subtitle>
+           <mat-card-content>{{item.Blog_Description | slice:0:80}}...</mat-card-content>
          
-           <mat-button-toggle>View</mat-button-toggle>
-           </mat-button-toggle-group>
+           <img mat-card-lg-image src="{{item.Blog_Images}}" alt="Shiba Inu">
+           <mat-card-actions align="end">
+           <button mat-raised-button>View</button>
            </mat-card-actions>
-           <!-- <mat-card-footer><i>admin </i> <b> sachin</b></mat-card-footer> -->
            </mat-card>
             
-        </div>
-        
+        </div> -->
+     <div class="col-md-4 p-3" *ngFor="let item of Blog_list">
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                (closed)="panelOpenState = false">
+        <mat-expansion-panel-header style="background-image: url({{item.Blog_Images}}); background-repeat: no-repeat; background-size: cover;" >
+        <mat-panel-title>
+        </mat-panel-title>
+       
+        </mat-expansion-panel-header>
+        <p>
+            <br>
+            <mat-card-title>{{item.Blog_title}}</mat-card-title>
+            <mat-card-subtitle>{{item.Blog_categories}}</mat-card-subtitle>
+            <mat-card-content>
+                <p>
+                    {{item.Blog_Description | slice:0:140}}...
+                </p>
+              </mat-card-content>
+            <button mat-raised-button [routerLink]="['/blog/', item.id]"  routerLinkActive="router-link-active" color="warn">view</button>  
+        </p>
+        </mat-expansion-panel>
+     </div>
     </div>
 </div>

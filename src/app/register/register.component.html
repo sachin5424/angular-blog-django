@@ -1,1 +1,57 @@
-<p>register works!</p>
+<section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mt-5 ml-auto">
+          <form [formGroup]="registerForm" (ngSubmit)="onsubmit()">
+            <div class="example-container">
+              <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                <mat-label>First Name</mat-label>
+                <input formControlName="first_name" matInput #firstname maxlength="10" placeholder="Last Name">
+                <mat-hint align="end">{{firstname.value?.length || 0}}/10</mat-hint>
+              </mat-form-field>
+            
+              <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                <mat-label>Last Name</mat-label>
+                <input formControlName="last_name"  matInput #lastname maxlength="10" placeholder="Last Name">
+                <mat-hint align="end">{{lastname.value?.length || 0}}/10</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="example-container ">
+              <mat-form-field class="w-100" hintLabel="Max 10 characters" appearance="fill">
+                <mat-label>Username</mat-label>
+                <input formControlName="username" matInput #username maxlength="10" placeholder="username">
+                <mat-hint align="end">{{lastname.value?.length || 0}}/10</mat-hint>
+                <br>
+                <mat-hint class="text-danger">{{errormess_username}}</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="example-container">
+              <mat-form-field  class="w-100" appearance="fill">
+                <mat-label>Enter your email</mat-label>
+                <input  matInput placeholder="pat@example.com" [formControl]="email_id" required>
+                <mat-error *ngIf="email_id.invalid">{{getErrorMessage()}}</mat-error>
+                <br>
+                <mat-hint class="text-danger">{{errormess_email}}</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="example-container">
+              <mat-form-field  class="w-100" appearance="fill">
+                <mat-label>Enter your password</mat-label>
+                <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              
+                </button>
+                <mat-hint class="text-danger">{{errormess_password}}</mat-hint>
+              </mat-form-field>
+              
+            </div>
+            <button mat-raised-button color="primay">Register</button>
+           
+         
+              
+        </form>
+        </div>
+      </div>
+    </div>
+</section>

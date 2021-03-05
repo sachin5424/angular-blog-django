@@ -5,7 +5,7 @@
     <div class="example-container">
       <div class="form-group">
         <label for="">Select Categories</label>
-        <select class="form-control" formControlName="Item_categories" name="Item_categories" id="" >
+        <select class="form-control" formControlName="Blog_categories" name="Blog_categories" id="" >
           <option value="">setect Categories</option>
           
           <option *ngFor="let item of categories_get_data"  value={{item.id}}>{{item.Categories_name}}</option>
@@ -15,13 +15,13 @@
        <div class="form-group">
          <label for="">Title</label>
          <input type="text"
-           class="form-control" [value]="data.Item_title" formControlName="Item_title" name="Item_title" id="" aria-describedby="helpId" placeholder="">
+           class="form-control" [value]="data.Blog_title" formControlName="Blog_title" name="Blog_title" id="" aria-describedby="helpId" placeholder="">
          <small id="helpId" class="form-text text-muted">Help text</small>
        </div>
 
       <div class="form-group">
 
-          <img [src]="data.Item_Images" width="100%" height=120px>
+          <img [src]="data.Blog_Images" width="100%" height=120px>
         <label for="">Images</label>
         <input type="file" class="form-control-file" (change)="onChange($event)" name="" id="" placeholder="" aria-describedby="fileHelpId">
                             
@@ -29,7 +29,7 @@
       </div>
     <div class="form-group">
       <label for="">Description</label>
-      <textarea class="form-control" [value]="data.Item_Description" formControlName="Item_Description"  name="Item_Description" name="" id="" rows="3"></textarea>
+      <textarea class="form-control" [value]="data.Blog_Description" formControlName="Blog_Description"  name="Blog_Description" name="" id="" rows="3"></textarea>
     </div>
      
      

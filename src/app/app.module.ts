@@ -10,6 +10,11 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BlogListComponent } from './blog-list/blog-list.component';
+import { BlogDetailsComponent } from './blog-details/blog-details.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { VerfiyUserComponent } from './verfiy-user/verfiy-user.component';
 
 
 
@@ -18,7 +23,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeDashBoardComponent
+    HomeDashBoardComponent,
+    BlogListComponent,
+    BlogDetailsComponent,
+    LoginComponent,
+    RegisterComponent,
+    VerfiyUserComponent
   ],
   imports: [
     BrowserModule,

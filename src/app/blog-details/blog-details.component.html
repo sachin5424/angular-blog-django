@@ -1,7 +1,23 @@
-<div class="container-fluid">
+<div class="container-fluid bgMain">
+
+    
+</div>
+<div class="container  mb-5">
     <div class="row">
-        <div class="col-lg-12">
-            <img width="100%" height="400px" src="assets/blog-images/luca-bravo-O453M2Liufs-unsplash.jpg" alt="">
+        <div class="col-md-12" id="blogBgImage">
+            <img width="100%" height="400px" src="{{blog_details.Blog_Images}}">
         </div>
+        <div class="col-md-12 mt-4 ">
+            <h1 class="display-1">{{blog_details.Blog_title}}
+                <mat-card-subtitle>{{blog_details.Blog_categories}}</mat-card-subtitle>
+             
+            </h1> 
+
+            <p>
+                {{blog_details.Blog_Description}}
+            </p>
+            
+        </div>
+        <button mat-raised-button class="mb-5">Add Blog</button>
     </div>
 </div>

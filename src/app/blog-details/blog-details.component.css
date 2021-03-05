@@ -1,0 +1,9 @@
+.bgMain{
+    background-image: url(~/src/assets/blog-images/luca-bravo-O453M2Liufs-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+}
+#blogBgImage{
+    margin-top: -25%;
+}

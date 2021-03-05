@@ -20,7 +20,7 @@
                         <div class="example-container">
                           <div class="form-group">
                             <label for="">Select Categories</label>
-                            <select class="form-control" formControlName="Item_categories" name="Item_categories" id="" >
+                            <select class="form-control" formControlName="Blog_categories" name="Blog_categories" id="" >
                               <option value="">setect Categories</option>
                               
                               <option *ngFor="let item of categories_get_data"  value="{{item.id}}">{{item.Categories_name}}</option>
@@ -29,8 +29,7 @@
                           </div>
                            <div class="form-group">
                              <label for="">Title</label>
-                             <input type="text"
-                               class="form-control" formControlName="Item_title" name="Item_title" id="" aria-describedby="helpId" placeholder="">
+                             <input type="text" class="form-control" formControlName="Blog_title" name="Blog_title" id="" aria-describedby="helpId" placeholder="">
                              <small id="helpId" class="form-text text-muted">Help text</small>
                            </div>
 
@@ -41,7 +40,7 @@
                           </div>
                         <div class="form-group">
                           <label for="">Description</label>
-                          <textarea class="form-control" formControlName="Item_Description"  name="Item_Description" name="" id="" rows="3"></textarea>
+                          <textarea class="form-control" formControlName="Blog_Description"  name="Blog_Description" name="" id="" rows="3"></textarea>
                         </div>
                           <div class="form-check">
                             <input class="form-check-input" formControlName="is_Active" value=true  type="radio" name="is_Active" id="flexRadioDefault1">
@@ -76,12 +75,12 @@
                         </span>
                    </a>
                 </div>
-
+               
                 <div class="col-md-6 p-4" *ngFor="let item of blog_data">
                  <mat-card style="box-shadow: 0px 6px 8px rgb(177, 172, 172);"  >
-                   <img matCardImage src="{{item.Item_Images}}">
-                   <mat-card-title>{{item.Item_title}}</mat-card-title>
-                   <mat-card-content>{{item.Item_categories}}</mat-card-content>
+                   <img matCardImage src="{{item.Blog_Images}}">
+                   <mat-card-title>{{item.Blog_title}}</mat-card-title>
+                   <mat-card-content>{{item.Blog_categories}}</mat-card-content>
                     <mat-card-actions>
                       <button (click)="categorie_updateform(item)" mat-button>View</button>
                       <button mat-button>update</button>

@@ -17,10 +17,10 @@ export class UpdateComponent implements OnInit {
   form_temp:boolean=false
   blog_form = new FormGroup({
     id:new FormControl(),
-    Item_categories:new FormControl(''),
-    Item_title:new FormControl(''),
-    Item_Images:new FormControl(''),
-    Item_Description:new FormControl(''),
+    Blog_categories:new FormControl(''),
+    Blog_title:new FormControl(''),
+    Blog_Images:new FormControl(''),
+    Blog_Description:new FormControl(''),
     is_Active:new FormControl(false),
     is_Featured:new FormControl(false)
   })
@@ -33,10 +33,10 @@ export class UpdateComponent implements OnInit {
       this.categories_get_data=result
       this.blog_form.setValue({
         id:this.data.id,
-        Item_categories:this.data.Item_categories,
-        Item_title:this.data.Item_title,
-        Item_Images:this.data.Item_Images,
-        Item_Description:this.data.Item_Description,
+        Blog_categories:this.data.Blog_categories,
+        Blog_title:this.data.Blog_title,
+        Blog_Images:this.data.Blog_Images,
+        Blog_Description:this.data.Blog_Description,
         is_Active:this.data.is_Active,
         is_Featured:this.data.is_Featured,
       })
@@ -57,10 +57,10 @@ export class UpdateComponent implements OnInit {
   onSubmit(){
     const jqueryForm = new FormData();
     jqueryForm.append('id',this.blog_form.value.id)
-    jqueryForm.append('Item_categories',this.blog_form.value.Item_categories)
-    jqueryForm.append('Item_Images',this.file,this.file.name)
-    jqueryForm.append('Item_title',this.blog_form.value.Item_title)
-    jqueryForm.append('Item_Description',this.blog_form.value.Item_Description)
+    jqueryForm.append('Blog_categories',this.blog_form.value.Blog_categories)
+    jqueryForm.append('Blog_Images',this.file,this.file.name)
+    jqueryForm.append('Blog_title',this.blog_form.value.Blog_title)
+    jqueryForm.append('Blog_Description',this.blog_form.value.Blog_Description)
     jqueryForm.append('is_Active',this.blog_form.value.is_Active)
     jqueryForm.append('is_Featured',this.blog_form.value.is_Featured)
   

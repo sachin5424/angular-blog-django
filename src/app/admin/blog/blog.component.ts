@@ -71,13 +71,13 @@ export class BlogComponent implements OnInit {
    }
   // categories
 
- 
+
 
   categories_form = new FormGroup({
-    Item_categories:new FormControl(''),
-    Item_title:new FormControl(''),
-    Item_Images:new FormControl(''),
-    Item_Description:new FormControl(''),
+    Blog_categories:new FormControl(''),
+    Blog_title:new FormControl(''),
+    Blog_Images:new FormControl(''),
+    Blog_Description:new FormControl(''),
     is_Active:new FormControl(false),
     is_Featured:new FormControl(false)
   })
@@ -96,10 +96,10 @@ export class BlogComponent implements OnInit {
        
     // }
     const jqueryForm = new FormData();
-    jqueryForm.append('Item_categories',this.categories_form.value.Item_categories)
-    jqueryForm.append('Item_Images',this.file,this.file.name)
-    jqueryForm.append('Item_title',this.categories_form.value.Item_title)
-    jqueryForm.append('Item_Description',this.categories_form.value.Item_Description)
+    jqueryForm.append('Blog_categories',this.categories_form.value.Blog_categories)
+    jqueryForm.append('Blog_Images',this.file,this.file.name)
+    jqueryForm.append('Blog_title',this.categories_form.value.Blog_title)
+    jqueryForm.append('Blog_Description',this.categories_form.value.Blog_Description)
     jqueryForm.append('is_Active',this.categories_form.value.is_Active)
     jqueryForm.append('is_Featured',this.categories_form.value.is_Featured)
     

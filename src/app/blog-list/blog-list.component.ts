@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-blog-list',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blog-list.component.css']
 })
 export class BlogListComponent implements OnInit {
-
-  constructor() { }
+  Blog_list:any=[]
+  Blog_backgroud_images:any
+  panelOpenState:boolean = false
+  constructor(private _userService:UserService) { }
 
   ngOnInit(): void {
+    this._userService.blog_list().subscribe((result:any)=>{
+     this.Blog_list = result
+   
+     
+    })
   }
 
 }

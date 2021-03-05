@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, Validators,FormGroup} from '@angular/forms';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import {FormControl, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
 
-  constructor() { }
+  constructor(private _userservice:UserService) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +21,17 @@ export class LoginComponent implements OnInit {
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+  logform=new FormGroup({
+    username:new FormControl(''),
+    password:new FormControl('')
+  })
+  onSubmit(){
+    console.log(this.logform.value);
+    this._userservice.user_token(this.logform.value).subscribe((result)=>{
+      console.log(result);
+      
+    })
   }
 
 }
