@@ -7,15 +7,19 @@
   <div class="navMenu">
     <button mat-raised-button color="primary" >Home</button>
     <button mat-raised-button routerLink="/blog" color="primary" >Blog</button>
-    <button mat-raised-button color="primary" >Home</button>
-    <button mat-raised-button color="primary" >Home</button>
+    <button mat-raised-button color="primary" >Contact</button>
+    <button mat-raised-button color="primary" >About</button>
+    <button mat-raised-button color="primary" routerLink="/login" >Login</button>
+    <button mat-raised-button color="primary" routerLink="/admin-panel" >Admin</button>
   </div>
     <span class="example-spacer"></span>
-
+   
     <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>login</mat-icon>
     </button> -->
-    <span><a routerLink="/admin-panel">admin</a></span>
+    <span><a class="text-white login" routerLink="/admin-panel">
+    <mat-icon >login</mat-icon>
+    </a></span>
   </mat-toolbar-row>
 
  

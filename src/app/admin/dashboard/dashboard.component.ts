@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AdminService } from '../admin.service';
 
 
@@ -15,9 +16,16 @@ export class DashboardComponent implements OnInit {
  
 
  
-  constructor(private _adminService:AdminService) { }
+  constructor(
+    private _adminService:AdminService,
+    private _router:Router
+    ) { }
 
   ngOnInit(): void {
  
+  }
+  logout(){
+    localStorage.removeItem('token')
+    this._router.navigate(['/login'])
   }
 } 

@@ -1,7 +1,7 @@
 
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
 
-
-<table class="table align-middle">
+<table class="table table-bordered table-striped mb-0">
   <thead>
     <tr>
       <th>Sno</th>
@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of User_list; index as i">
+    <tr *ngFor="let item of User_list; index as i ">
       <td scope="row">{{i+1}}</td>
       <td>
         <a href="#">
@@ -31,4 +31,7 @@
       </td>
     </tr>
   </tbody>
+  
 </table>
+</div>
+

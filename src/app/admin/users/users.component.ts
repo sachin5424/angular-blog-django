@@ -10,6 +10,7 @@ import { AdminService } from '../admin.service';
 export class UsersComponent implements OnInit {
   User_list:any=[]
   temp=false;
+
   constructor(private _adminservice:AdminService) { }
 
   ngOnInit(): void {
@@ -22,5 +23,6 @@ export class UsersComponent implements OnInit {
     
   })
   }
+
 
 }

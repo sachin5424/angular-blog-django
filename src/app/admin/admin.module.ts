@@ -9,13 +9,14 @@ import { CategoriesComponent } from './categories/categories.component';
 import { BlogComponent } from './blog/blog.component';
 import { UpdateComponent } from './blog/update/update.component';
 import { UsersComponent } from './users/users.component';
-
+import {NgxPaginationModule} from 'ngx-pagination'; 
 @NgModule({
   declarations: [DashboardComponent, CategoriesComponent, BlogComponent, UpdateComponent, UsersComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     HttpClientModule,
    
     AngularMaterialModule,

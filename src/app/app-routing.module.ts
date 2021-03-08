@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { HomeDashBoardComponent } from './home-dash-board/home-dash-board.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
  
   {
     path:'admin-panel',
+    canActivate:[AuthGuard],
     loadChildren: () => import('./admin/admin.module').then(m =>     
       m.AdminModule) 
   },

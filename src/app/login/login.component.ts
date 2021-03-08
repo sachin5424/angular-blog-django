@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators,FormGroup} from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
 @Component({
@@ -10,9 +11,13 @@ import { UserService } from '../user.service';
 export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
 
-  constructor(private _userservice:UserService) { }
+  constructor(
+    private _userservice:UserService,
+    private _router:Router
+    ) { }
 
   ngOnInit(): void {
+    localStorage.removeItem('token')
   }
  
   getErrorMessage() {
@@ -28,9 +33,10 @@ export class LoginComponent implements OnInit {
   })
   onSubmit(){
     console.log(this.logform.value);
-    this._userservice.user_token(this.logform.value).subscribe((result)=>{
+    this._userservice.user_token(this.logform.value).subscribe((result:any)=>{
       console.log(result);
-      
+      localStorage.setItem('token',result.access)
+      this._router.navigate(['/'])
     })
   }
 
